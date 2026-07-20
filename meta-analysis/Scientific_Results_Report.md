@@ -40,13 +40,18 @@ This analysis identified a highly robust signature of exactly **198 conserved up
 ### 3.3 Functional Annotation of the Conserved Upregulated Genes
 Functional annotation of the 198 conserved upregulated genes completely reconstructed the classical **Type I Interferon Antiviral Response**, providing massive *in silico* validation of the pipeline's accuracy. The meta-signature is heavily dominated by classical antiviral gene families:
 
-| Gene Family | Identified Members in Meta-Signature | Primary Biological Function in ZIKV Infection |
-| :--- | :--- | :--- |
-| **Interferon-Induced Proteins with Tetratricopeptide Repeats (IFIT)** | `IFIT1`, `IFIT2`, `IFIT3`, `IFIT5`, `IFITM1` | Directly bind 5'-capped viral RNA and potently inhibit viral translation initiation. |
-| **Oligoadenylate Synthetases (OAS)** | `OAS2`, `OAS3`, `OASL` | Detect cytosolic viral dsRNA and activate RNase L to rapidly degrade viral genomes. |
-| **Myxovirus Resistance (MX)** | `MX1`, `MX2` | Dynamin-like GTPases that assemble into ring-like structures to block viral replication and capsid assembly. |
-| **Interferon Regulatory Factors (IRF)** | `IRF7`, `IRF9` | Master transcription factors driving the secondary, amplified antiviral cellular state. |
-| **Cytosolic RNA Sensors & Effectors** | `IFI6`, `IFI16`, `IFI27`, `IFI44`, `IFIH1` (MDA5), `RIGI` | Primary cytosolic pattern recognition receptors (PRRs) that detect viral RNA to initiate the immune cascade. |
+| Gene Name | Regulation | Conserved Datasets (Count) | Representative Adj. P-value | Biological & Functional Annotation |
+| :--- | :--- | :--- | :--- | :--- |
+| **`IFI44L`** | Upregulated | 3 / 3 | $P_{adj} < 10^{-100}$ | **Interferon-Induced Effector:** Universal antiviral host-defense protein. |
+| **`CCL5`** (RANTES) | Upregulated | 3 / 3 | $P_{adj} < 10^{-20}$ | **Chemoattractant:** Recruits memory T-cells, eosinophils, and basophils to the site of infection. |
+| **`IFIT1`** | Upregulated | 2 / 3 | $P_{adj} < 10^{-200}$ | **Viral Translation Inhibitor:** Directly binds 5'-capped viral RNA to stall viral ribosomes. |
+| **`IFIT3`** | Upregulated | 2 / 3 | $P_{adj} < 10^{-200}$ | **Interferon-Induced Effector:** Scaffold protein amplifying IFIT1 and IFIT2 antiviral signaling. |
+| **`MX1`** | Upregulated | 2 / 3 | $P_{adj} < 10^{-250}$ | **Capsid Assembly Blocker:** Dynamin-like GTPase that assembles into ring structures to trap viral components. |
+| **`OAS3`** | Upregulated | 2 / 3 | $P_{adj} < 10^{-150}$ | **dsRNA Sensor:** Detects cytosolic viral replication intermediates and activates RNase L to rapidly degrade viral genomes. |
+| **`IFIH1`** (MDA5) | Upregulated | 2 / 3 | $P_{adj} < 10^{-150}$ | **Primary Viral RNA Sensor:** Cytosolic pattern recognition receptor (PRR) that detects viral RNA to initiate the primary immune cascade. |
+| **`IRF7`** | Upregulated | 2 / 3 | $P_{adj} < 10^{-100}$ | **Master Transcription Factor:** Drives the secondary, highly amplified Type I Interferon antiviral state. |
+| **`ALDH1A1`** | Downregulated | 2 / 3 | $P_{adj} < 10^{-120}$ | **Metabolic Enzyme:** Responsible for retinoic acid synthesis; its severe suppression indicates viral hijacking of cellular metabolism. |
+| **`SLC27A2`** | Downregulated | 2 / 3 | $P_{adj} < 10^{-130}$ | **Fatty Acid Transporter:** Downregulation reflects ZIKV-induced disruption of host cellular lipid membranes for viral envelope assembly. |
 
 *Note: The native detection of `IFIH1` (MDA5), `OAS3`, and `IFIT1` across independent studies strongly validates the meta-analysis, as these are known primary cytosolic sensors and restriction factors specifically tailored for Flaviviruses like Zika.*
 
