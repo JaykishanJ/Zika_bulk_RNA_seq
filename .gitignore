@@ -1,0 +1,20 @@
+# History and workspaces
+.Rhistory
+.Rapp.history
+.RData
+.RDataTmp*
+.Ruserdata
+.Rproj.user/
+
+# Large raw files
+*.fastq.gz
+*.bam
+*.sam
+*.tar
+*.tar.gz
+*.zip
+*.gz
+
+# OS generated files
+.DS_Store
+Thumbs.db
