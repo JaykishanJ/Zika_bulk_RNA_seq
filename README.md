@@ -14,62 +14,9 @@
 
 ## 📌 Visual Abstract
 
-```mermaid
-graph TD
-    subgraph Sources [Independent Datasets]
-        A1["GSE146423<br/>A549 ZIKV vs Mock (n=6)"]
-        A2["GSE233049<br/>A549 ZIKV vs Mock (n=6)"]
-        A3["GSE265922<br/>A549 ZIKV vs Mock (n=6)"]
-    end
-
-    subgraph PreProcessing [Unified Pre-processing]
-        B["Gene ID Mapping<br/>(Conversion to Universal SYMBOL)"]
-        C["Low-Count Filtering<br/>(≥10 counts in ≥3 samples)"]
-    end
-
-    A1 -->|~33k genes| B
-    A2 -->|~31k genes| B
-    A3 -->|~60k genes| B
-    
-    B --> C
-
-    subgraph Statistics [Differential Expression]
-        D["DESeq2 Normalization"]
-        E["apeglm LFC Shrinkage<br/>(Dampens low-count noise)"]
-        F["Significance Filter<br/>(padj < 0.05, |log2FC| > 1)"]
-    end
-
-    C -->|~16k - 20k genes| D
-    D --> E
-    E --> F
-
-    subgraph Individual_DEGs [Dataset-Specific DEGs]
-        G1["Dataset 1<br/>117 DEGs"]
-        G2["Dataset 2<br/>1,695 DEGs"]
-        G3["Dataset 3<br/>8,378 DEGs"]
-    end
-
-    F --> G1
-    F --> G2
-    F --> G3
-
-    subgraph Meta_Analysis [Meta-Analysis Integration]
-        H["Universal 3/3 Overlap<br/>(66 Conserved Genes)"]
-        I["Robust 2/3 Meta-Signature<br/>(1,118 Up | 16 Down)"]
-    end
-
-    G1 --> H & I
-    G2 --> H & I
-    G3 --> H & I
-
-    subgraph Validation [Biological Discovery]
-        J["Functional Enrichment<br/>(Type I IFN Response)"]
-        K["PPI Master Regulators<br/>(IFIH1, IRF7, IFIT1)"]
-    end
-
-    I --> J
-    I --> K
-```
+<div align="center">
+  <img src="Workflow_Zika_wetlab.png" width="100%" alt="Zika Meta-Analysis Workflow Visual Abstract" />
+</div>
 
 ---
 
