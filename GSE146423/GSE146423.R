@@ -212,8 +212,7 @@ save_png(
 cat("✓ 06_Volcano.png\n")
 
 # 5b. EnhancedVolcano
-png(file.path("plots/DEG","07_EnhancedVolcano.png"), 11, 9, "in", res = 600)
-EnhancedVolcano(deg, lab = deg$SYMBOL, x = "log2FoldChange", y = "padj",
+p_ev <- EnhancedVolcano(deg, lab = deg$SYMBOL, x = "log2FoldChange", y = "padj",
                 title = "ZIKV vs Control (A549) — DESeq2 | GRCh38.p13",
                 subtitle = sprintf("%d up  ·  %d down  ·  %d total", n_up, n_down, n_up + n_down),
                 caption = sprintf("padj < 0.05, |log2FC| > 1 | %d genes", nrow(deg)),
@@ -221,7 +220,7 @@ EnhancedVolcano(deg, lab = deg$SYMBOL, x = "log2FoldChange", y = "padj",
                 legendPosition = "bottom", drawConnectors = TRUE, max.overlaps = 25,
                 selectLab = top30$SYMBOL[1:min(25, nrow(top30))],
                 border = "full", borderWidth = 0.8)
-dev.off()
+save_png(p_ev, "plots/DEG", "07_EnhancedVolcano", 11, 9)
 cat("✓ 07_EnhancedVolcano.png\n")
 
 # 5c. MA Plot
@@ -354,10 +353,17 @@ cat("\n═══ Running GSEA ═══\n")
 set.seed(42)   # reproducibility
 
 # Build ranked gene list: sorted by log2FoldChange (most up → most down)
+# FIX: Update ranking metric to use signed -log10(pvalue) instead of log2FoldChange
+# for more robust GSEA calculations, consistent with the other datasets.
 rnk <- deg %>%
+  mutate(
+    p_safe = ifelse(pvalue == 0 | is.na(pvalue), 1e-300, pvalue),
+    rank_metric = sign(log2FoldChange) * -log10(p_safe)
+  ) %>%
+  filter(!is.na(rank_metric)) %>%
   distinct(GeneID, .keep_all = TRUE) %>%
-  arrange(desc(log2FoldChange)) %>%
-  pull(log2FoldChange, GeneID) %>%
+  arrange(desc(rank_metric)) %>%
+  pull(rank_metric, GeneID) %>%
   sort(decreasing = TRUE)
 
 cat(sprintf("Ranked list: %d genes (range: %.2f to %.2f)\n",

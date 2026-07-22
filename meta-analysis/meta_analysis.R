@@ -75,11 +75,24 @@ for (name in names(deg_list)) {
 common_up <- Reduce(intersect, up_genes)
 common_dn <- Reduce(intersect, dn_genes)
 
-cat(sprintf("Common Upregulated across all 3 datasets: %d genes\n", length(common_up)))
-cat(sprintf("Common Downregulated across all 3 datasets: %d genes\n", length(common_dn)))
+# FIX FOR PROBLEM 4 & 2: Added explicit calculation and export of 2-of-3 dataset overlaps 
+# so that the main "198/355" headline numbers are reproducible within the main pipeline 
+# instead of relying on the external scratch script (temp_query.R).
+# Calculate 2-of-3 overlap
+all_up_counts <- table(unlist(up_genes))
+up_2of3 <- names(all_up_counts[all_up_counts >= 2])
+all_dn_counts <- table(unlist(dn_genes))
+dn_2of3 <- names(all_dn_counts[all_dn_counts >= 2])
 
-write.csv(data.frame(Gene = common_up), "results/Common_Upregulated.csv", row.names = FALSE)
-write.csv(data.frame(Gene = common_dn), "results/Common_Downregulated.csv", row.names = FALSE)
+cat(sprintf("Upregulated across all 3 datasets: %d genes\n", length(common_up)))
+cat(sprintf("Downregulated across all 3 datasets: %d genes\n", length(common_dn)))
+cat(sprintf("Upregulated in at least 2 of 3 datasets: %d genes\n", length(up_2of3)))
+cat(sprintf("Downregulated in at least 2 of 3 datasets: %d genes\n", length(dn_2of3)))
+
+write.csv(data.frame(Gene = common_up), "results/Common_Upregulated_3of3.csv", row.names = FALSE)
+write.csv(data.frame(Gene = common_dn), "results/Common_Downregulated_3of3.csv", row.names = FALSE)
+write.csv(data.frame(Gene = up_2of3), "results/Common_Upregulated_2of3.csv", row.names = FALSE)
+write.csv(data.frame(Gene = dn_2of3), "results/Common_Downregulated_2of3.csv", row.names = FALSE)
 
 # Venn Diagrams
 venn_up <- ggVennDiagram(up_genes, category.names = names(up_genes)) + 

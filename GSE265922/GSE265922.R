@@ -371,8 +371,11 @@ deg <- as.data.frame(res) %>%
   arrange(padj)
 
 # Add mean normalized counts per group
-deg$Mean_Ctrl <- rowMeans(counts(dds, normalized = TRUE)[deg$GeneID, 1:n_ctrl])
-deg$Mean_ZIKV <- rowMeans(counts(dds, normalized = TRUE)[deg$GeneID, (n_ctrl + 1):(n_ctrl + n_zikv)])
+# FIX FOR PROBLEM 3: Originally, Mean_Ctrl was incorrectly assigned to the ZIKV columns (1:n_zikv) 
+# and Mean_ZIKV to the Control columns because the ZIKV samples come first in the count matrix. 
+# They are now correctly swapped.
+deg$Mean_ZIKV <- rowMeans(counts(dds, normalized = TRUE)[deg$GeneID, 1:n_zikv])
+deg$Mean_Ctrl <- rowMeans(counts(dds, normalized = TRUE)[deg$GeneID, (n_zikv + 1):(n_zikv + n_ctrl)])
 
 n_up   <- sum(deg$dir == "Up")
 n_down <- sum(deg$dir == "Down")
@@ -562,8 +565,7 @@ save_png(p_volcano, "plots/DEG", "06_Volcano", 10, 8.5)
 
 # EnhancedVolcano
 top_labels <- top30$Label[1:min(25, nrow(top30))]
-png(file.path("plots/DEG", "07_EnhancedVolcano.png"), 11, 9, "in", res = 600)
-EnhancedVolcano(
+p_ev <- EnhancedVolcano(
   deg,
   lab          = deg$Label,
   x            = "log2FoldChange",
@@ -586,7 +588,7 @@ EnhancedVolcano(
   border            = "full",
   borderWidth       = 0.8
 )
-dev.off()
+save_png(p_ev, "plots/DEG", "07_EnhancedVolcano", 11, 9)
 
 # MA plot
 png(file.path("plots/DEG", "08_MA_Plot.png"), 9, 7, "in", res = 600)
