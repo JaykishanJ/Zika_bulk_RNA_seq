@@ -168,7 +168,11 @@ tryCatch({
     hits <- mapped$STRING_id
     sub_net <- string_db$get_subnetwork(hits)
     
-    deg <- degree(sub_net)
+    # Remove isolated nodes (genes with 0 interactions)
+    isolated <- which(igraph::degree(sub_net) == 0)
+    sub_net <- igraph::delete.vertices(sub_net, isolated)
+    
+    deg <- igraph::degree(sub_net)
     hub_genes <- sort(deg, decreasing = TRUE)
     
     hub_df <- data.frame(STRING_id = names(hub_genes), Degree = as.numeric(hub_genes))

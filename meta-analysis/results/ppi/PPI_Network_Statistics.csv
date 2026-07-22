@@ -1,0 +1,10 @@
+Metric,Value
+Nodes,46
+Edges,458
+Average degree,19.91
+Network density,0.4425
+Clustering coefficient,0.7558
+Avg path length,1.663
+Connected components,1
+Modules (Louvain),0
+Modularity,0.1006
