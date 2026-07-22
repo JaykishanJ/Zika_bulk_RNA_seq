@@ -30,7 +30,9 @@ suppressPackageStartupMessages({
   library(igraph)
 })
 
-setwd("d:/Zika_wetlab/meta-analysis")
+if (interactive() && requireNamespace("rstudioapi", quietly = TRUE)) {
+  setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+}
 for (d in c("results", "plots")) dir.create(d, recursive = TRUE, showWarnings = FALSE)
 
 theme_pub <- theme_minimal() + theme(
@@ -188,3 +190,4 @@ tryCatch({
 })
 
 cat("\n═══ Meta-Analysis Complete ═══\n")
+writeLines(capture.output(sessionInfo()), "results/sessionInfo.txt")

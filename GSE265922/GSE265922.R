@@ -18,7 +18,9 @@ suppressPackageStartupMessages({
   library(apeglm)
 })
 
-setwd("d:/Zika_wetlab/GSE265922")
+if (interactive() && requireNamespace("rstudioapi", quietly = TRUE)) {
+  setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+}
 for (d in c("results/tables", "plots/QC", "plots/DEG", "plots/Enrichment", "plots/GSEA"))
   dir.create(d, recursive = TRUE, showWarnings = FALSE)
 
@@ -212,7 +214,7 @@ if (id_type == "ENSEMBL") {
       fromType = "ENSEMBL",
       toType   = c("ENTREZID", "SYMBOL"),
       OrgDb    = org.Hs.eg.db
-    ),
+    ) %>% dplyr::distinct(ENSEMBL, .keep_all = TRUE),
     error = function(e) {
       cat("ERROR in ENSEMBL mapping:", e$message, "\n")
       return(NULL)
@@ -316,7 +318,7 @@ dds <- DESeqDataSetFromMatrix(
   design    = ~ condition
 )
 
-# Pre-filter: keep genes with ≥ 10 counts in at least 3 samples (smallest group size)
+# Pre-filtering: keep genes with ≥ 10 counts in at least 3 samples (smallest group size, per DESeq2 vignette)
 dds <- dds[rowSums(counts(dds) >= 10) >= 3, ]
 cat(sprintf("After prefilter (≥10 counts in ≥3 samples): %d genes\n", nrow(dds)))
 
@@ -1042,3 +1044,4 @@ cat(sprintf(
   strrep("=", 66)
 ))
 
+writeLines(capture.output(sessionInfo()), "results/sessionInfo.txt")

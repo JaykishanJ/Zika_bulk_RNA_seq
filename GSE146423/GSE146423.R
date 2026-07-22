@@ -8,7 +8,9 @@ suppressPackageStartupMessages({
   library(RColorBrewer); library(clusterProfiler); library(org.Hs.eg.db)
   library(enrichplot); library(EnhancedVolcano); library(apeglm)
 })
-setwd("d:/Zika_wetlab/GSE146423")
+if (interactive() && requireNamespace("rstudioapi", quietly = TRUE)) {
+  setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+}
 for (d in c("results/tables", "plots/QC", "plots/DEG", "plots/Enrichment", "plots/GSEA"))
   dir.create(d, recursive = TRUE, showWarnings = FALSE)
 
@@ -83,6 +85,7 @@ dds <- DESeqDataSetFromMatrix(cnt,
                               data.frame(condition = factor(rep(c("Control","ZIKV"), each = 3),
                                                             levels = c("Control","ZIKV")),
                                          row.names = colnames(cnt)), ~ condition)
+# Pre-filtering: keep genes with >=10 reads in at least 3 samples (recommended by DESeq2 vignette for n=3)
 dds <- dds[rowSums(counts(dds) >= 10) >= 3, ]
 cat(sprintf("After prefilter: %d genes\n", nrow(dds)))
 
@@ -546,3 +549,4 @@ cat(sprintf("
             nrow(as.data.frame(kegg_all)), n_gsea,
             strrep("=", 66)))
 
+writeLines(capture.output(sessionInfo()), "results/sessionInfo.txt")
