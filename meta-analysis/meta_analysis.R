@@ -200,9 +200,16 @@ tryCatch({
            vertex.frame.color = "white",
            edge.width = 0.5,
            edge.color = "gray80",
-           main = "Literature-Grade PPI Network of Core ZIKV Signature")
+      main = "Literature-Grade PPI Network of Core ZIKV Signature")
       legend("bottomright", legend=c("Top 10% Hub Genes", "Peripheral Genes"), col=c("#D73027", "#4575B4"), pch=19, bty="n", cex=1.2)
       dev.off()
+      
+      # ---- Cytoscape Export ----
+      # Export the perfectly formatted igraph network into a standard GraphML file
+      # This allows direct 1-click import into Cytoscape (File -> Import -> Network from File)
+      cat("\nExporting network for Cytoscape...\n")
+      igraph::write_graph(sub_net, "results/STRING_PPI_Network_Cytoscape.graphml", format = "graphml")
+      cat("✓ Cytoscape GraphML saved to results/STRING_PPI_Network_Cytoscape.graphml\n")
     }
   }
 }, error = function(e) {
