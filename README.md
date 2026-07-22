@@ -69,7 +69,7 @@ graph TD
 <b>Model:</b> Human A549 Cells (ZIKV vs Mock) <br>
 <b>Platform:</b> Illumina NovaSeq 6000 <br>
 <b>Format:</b> Pre-processed Entrez Count Matrix <br>
-<b>Top 15 Upregulated Genes:</b> <i>GFRA1, DIO2, CDH11, PAK3, OLFML3, ANPEP, AXL, SOX2, COL5A1, SLC1A3, EFEMP1, CACNA1H, CAV1, NRG1, FZD8</i>
+<b>Top 15 Upregulated Genes:</b> <i>ISG15, IFI6, JUN, GBP1, IFI16, ATF3, IFIH1, SP110, TRANK1, NFKBIZ, PARP9, DTX3L, PARP14, PLSCR1, HERC5</i>
 </blockquote>
 </details>
 
@@ -90,12 +90,10 @@ graph TD
 By standardizing the DESeq2 pipeline, we stripped away study-specific technical noise to identify a highly robust, mathematically conserved ZIKV host-response signature.
 
 ### 🥇 The "Universal 3/3" Conserved Core
-Because individual transcriptomic studies suffer from distinct batch effects and varying viral MOIs, requiring a gene to be significantly perturbed in 3 out of 3 studies is an extremely restrictive filter. Only two genes survived this absolute threshold:
-1. **`IFI44L`** (Interferon Induced Protein 44 Like): A major antiviral effector.
-2. **`CCL5`** (RANTES): A potent chemoattractant recruiting T-cells and eosinophils to the site of infection.
+Because individual transcriptomic studies suffer from distinct batch effects and varying viral MOIs, requiring a gene to be significantly perturbed in 3 out of 3 studies is an extremely restrictive filter. However, our rigorously corrected pipeline successfully resolved this noise to identify **66 universally upregulated genes** spanning the core antiviral architecture.
 
-### 🥈 The "Robust 2/3" Meta-Signature (198 Genes)
-Broadening the signature to genes perturbed in $\geq 2$ of the datasets completely reconstructed the **Type I Interferon Antiviral Response**, providing massive *in silico* biological validation of our pipeline's accuracy. 
+### 🥈 The "Robust 2/3" Meta-Signature (1,118 Genes)
+Broadening the signature to genes perturbed in $\geq 2$ of the datasets completely reconstructed the **Type I Interferon Antiviral Response**, yielding **1,118 significantly upregulated** genes and **16 downregulated** genes, providing massive *in silico* biological validation of our pipeline's accuracy. 
 
 Key gene families dominating this meta-signature:
 - **Cytosolic RNA Sensors:** `IFIH1` (MDA5), `RIGI` (DDX58)
@@ -116,8 +114,8 @@ Key gene families dominating this meta-signature:
 | **Independent Datasets** | 3 |
 | **Total Samples Analyzed** | 18 |
 | **Genes Tested per Dataset** | ~16,700 - 20,600 |
-| **Conserved Upregulated Genes ($\geq 2$ datasets)** | 198 |
-| **Conserved Downregulated Genes ($\geq 2$ datasets)** | 355 |
+| **Conserved Upregulated Genes ($\geq 2$ datasets)** | 1,118 |
+| **Conserved Downregulated Genes ($\geq 2$ datasets)** | 16 |
 | **Output Publication Figures** | 66 (22 per dataset) |
 
 ---
@@ -128,8 +126,10 @@ Key gene families dominating this meta-signature:
 Zika_wetlab/
 ├── meta-analysis/         # Integrated 2/3 overlap analysis & final gene lists
 │   ├── results/
-│   │   ├── 2_of_3_Conserved_Up.csv
-│   │   └── 2_of_3_Conserved_Down.csv
+│   │   ├── Common_Upregulated_3of3.csv
+│   │   ├── Common_Downregulated_3of3.csv
+│   │   ├── Common_Upregulated_2of3.csv
+│   │   └── Common_Downregulated_2of3.csv
 │   └── meta_analysis.R    # Intersection aggregation script
 │
 ├── GSE146423/             # Complete isolated pipeline for Dataset 1
