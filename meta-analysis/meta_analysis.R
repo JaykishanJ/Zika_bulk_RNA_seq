@@ -183,6 +183,9 @@ tryCatch({
       # Map STRING IDs to gene symbols for labels
       V(sub_net)$label <- mapped$gene[match(V(sub_net)$name, mapped$STRING_id)]
       
+      # Calculate degree for continuous mapping
+      V(sub_net)$degree <- degree(sub_net)
+      
       # Highlight top 10% hub genes in red, others in blue
       deg_thresh <- quantile(degree(sub_net), 0.9)
       V(sub_net)$color <- ifelse(degree(sub_net) >= deg_thresh, "#D73027", "#4575B4")
