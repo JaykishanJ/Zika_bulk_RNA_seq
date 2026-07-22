@@ -55,6 +55,21 @@ Functional annotation of the 1,118 conserved upregulated genes completely recons
 
 *Note: The native detection of `IFIH1` (MDA5), `OAS3`, and `IFIT1` across independent studies strongly validates the meta-analysis, as these are known primary cytosolic sensors and restriction factors specifically tailored for Flaviviruses like Zika.*
 
+### 3.4 Protein-Protein Interaction (PPI) Network Analysis
+To investigate the interactome topology of the core conserved signature, we constructed a high-confidence Protein-Protein Interaction (PPI) network using the STRING database. We aggressively filtered isolated nodes (degree = 0) to resolve a dense, highly interconnected meta-network (46 nodes, 458 edges). 
+
+Topological analysis (via Degree, Betweenness, and Maximal Clique Centrality) revealed a tightly coordinated antiviral hub architecture. The Louvain community detection algorithm successfully partitioned the network into 4 highly functional modules.
+
+<div align="center">
+  <img src="plots/ppi/01_PPI_Network.png" width="45%" alt="Global PPI Network" />
+  <img src="plots/ppi/06_Hub_Subnetwork.png" width="45%" alt="Core Hub Subnetwork" />
+</div>
+
+<div align="center">
+  <img src="plots/ppi/02_PPI_Modules.png" width="45%" alt="Functional Louvain Modules" />
+  <img src="plots/ppi/04_Hub_Metric_Heatmap.png" width="45%" alt="Centrality Concordance Heatmap" />
+</div>
+
 ---
 
 ## 4. Discussion & Conclusion

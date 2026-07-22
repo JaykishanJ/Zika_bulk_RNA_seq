@@ -174,7 +174,8 @@ Zika_wetlab/
 │   │   ├── Common_Downregulated_3of3.csv
 │   │   ├── Common_Upregulated_2of3.csv
 │   │   └── Common_Downregulated_2of3.csv
-│   └── meta_analysis.R    # Intersection aggregation script
+│   ├── meta_analysis.R    # Intersection aggregation script
+│   └── ppi_network.R      # Publication-ready PPI generation script
 │
 ├── GSE146423/             # Complete isolated pipeline for Dataset 1
 │   ├── plots/             # 600 DPI PNGs (QC, Volcano, Heatmap, GSEA, Networks)
@@ -230,9 +231,16 @@ Zika_wetlab/
 </details>
 
 <details open>
-<summary><b>Functional Enrichment & Pathway Networks (Example: GSE146423)</b></summary>
+<summary><b>Protein-Protein Interaction Networks (Global & Modules)</b></summary>
 <br>
-<img src="GSE146423/plots/Enrichment/11_GO_BP_Up.png" width="45%" />
+<img src="meta-analysis/plots/ppi/01_PPI_Network.png" width="45%" />
+<img src="meta-analysis/plots/ppi/02_PPI_Modules.png" width="45%" />
+</details>
+
+<details open>
+<summary><b>Functional Enrichment & Hub Gene Analysis (Example: GSE146423)</b></summary>
+<br>
+<img src="meta-analysis/plots/ppi/04_Hub_Metric_Heatmap.png" width="45%" />
 <img src="GSE146423/plots/GSEA/21_GSEA_CnetPlot.png" width="45%" />
 </details>
 
