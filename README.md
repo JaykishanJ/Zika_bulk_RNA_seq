@@ -218,29 +218,37 @@ Zika_wetlab/
 
 <details open>
 <summary><b>Meta-Analysis Integrations</b></summary>
-<br>
-<img src="meta-analysis/plots/01_Venn_Up.png" width="45%" />
-<img src="meta-analysis/plots/03_Common_Signature_Heatmap.png" width="45%" />
+
+| Upregulated Venn Diagram | Core Signature Heatmap |
+| :---: | :---: |
+| <img src="meta-analysis/plots/01_Venn_Up.png" width="100%" /> | <img src="meta-analysis/plots/03_Common_Signature_Heatmap.png" width="100%" /> |
+
 </details>
 
 <details open>
 <summary><b>Dataset Quality Control & Differential Expression (Example: GSE146423)</b></summary>
-<br>
-<img src="GSE146423/plots/QC/01_PCA.png" width="45%" />
-<img src="GSE146423/plots/DEG/07_EnhancedVolcano.png" width="45%" />
+
+| PCA Batch Diagnostics | Enhanced Volcano Plot |
+| :---: | :---: |
+| <img src="GSE146423/plots/QC/01_PCA.png" width="100%" /> | <img src="GSE146423/plots/DEG/07_EnhancedVolcano.png" width="100%" /> |
+
 </details>
 
 <details open>
 <summary><b>Protein-Protein Interaction Networks (Global & Modules)</b></summary>
-<br>
-<img src="meta-analysis/plots/ppi/01_PPI_Network.png" width="45%" />
-<img src="meta-analysis/plots/ppi/02_PPI_Modules.png" width="45%" />
+
+| Global PPI Network | Functional Modules |
+| :---: | :---: |
+| <img src="meta-analysis/plots/ppi/01_PPI_Network.png" width="100%" /> | <img src="meta-analysis/plots/ppi/02_PPI_Modules.png" width="100%" /> |
+
 </details>
 
 <details open>
 <summary><b>Functional Enrichment & Hub Gene Analysis (Example: GSE146423)</b></summary>
-<br>
-<img src="meta-analysis/plots/ppi/04_Hub_Metric_Heatmap.png" width="45%" />
-<img src="GSE146423/plots/GSEA/21_GSEA_CnetPlot.png" width="45%" />
+
+| Hub Centrality Concordance | GSEA Core Pathway Network |
+| :---: | :---: |
+| <img src="meta-analysis/plots/ppi/04_Hub_Metric_Heatmap.png" width="100%" /> | <img src="GSE146423/plots/GSEA/21_GSEA_CnetPlot.png" width="100%" /> |
+
 </details>
 

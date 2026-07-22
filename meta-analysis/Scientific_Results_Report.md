@@ -32,10 +32,9 @@ To establish a broader, physiologically relevant profile of ZIKV pathogenesis, w
 
 This analysis identified a highly robust signature of exactly **1,118 conserved upregulated genes** and **16 conserved downregulated genes**. 
 
-<div align="center">
-  <img src="plots/01_Venn_Up.png" width="45%" alt="Upregulated Overlap" />
-  <img src="plots/02_Venn_Down.png" width="45%" alt="Downregulated Overlap" />
-</div>
+| Upregulated Overlap | Downregulated Overlap |
+| :---: | :---: |
+| <img src="plots/01_Venn_Up.png" width="100%" alt="Upregulated Overlap" /> | <img src="plots/02_Venn_Down.png" width="100%" alt="Downregulated Overlap" /> |
 
 ### 3.3 Functional Annotation of the Conserved Upregulated Genes
 Functional annotation of the 1,118 conserved upregulated genes completely reconstructed the classical **Type I Interferon Antiviral Response**, providing massive *in silico* validation of the pipeline's accuracy. The meta-signature is heavily dominated by classical antiviral gene families:
@@ -60,15 +59,15 @@ To investigate the interactome topology of the core conserved signature, we cons
 
 Topological analysis (via Degree, Betweenness, and Maximal Clique Centrality) revealed a tightly coordinated antiviral hub architecture. The Louvain community detection algorithm successfully partitioned the network into 4 highly functional modules.
 
-<div align="center">
-  <img src="plots/ppi/01_PPI_Network.png" width="45%" alt="Global PPI Network" />
-  <img src="plots/ppi/06_Hub_Subnetwork.png" width="45%" alt="Core Hub Subnetwork" />
-</div>
+| Global PPI Network | Core Hub Subnetwork |
+| :---: | :---: |
+| <img src="plots/ppi/01_PPI_Network.png" width="100%" alt="Global PPI Network" /> | <img src="plots/ppi/06_Hub_Subnetwork.png" width="100%" alt="Core Hub Subnetwork" /> |
 
-<div align="center">
-  <img src="plots/ppi/02_PPI_Modules.png" width="45%" alt="Functional Louvain Modules" />
-  <img src="plots/ppi/04_Hub_Metric_Heatmap.png" width="45%" alt="Centrality Concordance Heatmap" />
-</div>
+<br>
+
+| Functional Louvain Modules | Centrality Concordance Heatmap |
+| :---: | :---: |
+| <img src="plots/ppi/02_PPI_Modules.png" width="100%" alt="Functional Louvain Modules" /> | <img src="plots/ppi/04_Hub_Metric_Heatmap.png" width="100%" alt="Centrality Concordance Heatmap" /> |
 
 ---
 
