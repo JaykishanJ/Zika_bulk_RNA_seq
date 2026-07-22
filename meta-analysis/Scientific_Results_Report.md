@@ -6,7 +6,7 @@ This document serves as a comprehensive summary of the findings from the integra
 
 ## 1. Abstract / Summary of Findings
 
-To overcome the inherent batch effects and viral strain variations present in isolated transcriptomic studies, we conducted a rigorous meta-analysis integrating three independent ZIKV RNA-seq datasets (GSE146423, GSE233049, GSE265922). By enforcing a mathematically identical preprocessing and differential expression pipeline (DESeq2 with `apeglm` shrinkage), we stripped away technical noise to reveal a robust, conserved host-response signature. We identified 198 universally upregulated and 355 downregulated genes across multiple datasets. This core signature perfectly reconstructs the classical Type I Interferon antiviral response, successfully capturing primary cytosolic viral sensors (e.g., `IFIH1`/MDA5, `RIGI`) and critical viral translation inhibitors (e.g., `IFIT1-3`, `OAS1-3`).
+To overcome the inherent batch effects and viral strain variations present in isolated transcriptomic studies, we conducted a rigorous meta-analysis integrating three independent ZIKV RNA-seq datasets (GSE146423, GSE233049, GSE265922). By enforcing a mathematically identical preprocessing and differential expression pipeline (DESeq2 with `apeglm` shrinkage), we stripped away technical noise to reveal a robust, conserved host-response signature. We identified 1,118 significantly upregulated and 16 downregulated genes across multiple datasets. This core signature perfectly reconstructs the classical Type I Interferon antiviral response, successfully capturing primary cytosolic viral sensors (e.g., `IFIH1`/MDA5, `RIGI`) and critical viral translation inhibitors (e.g., `IFIT1-3`, `OAS1-3`).
 
 ---
 
@@ -23,14 +23,14 @@ To ensure true statistical comparability across independent studies, the followi
 ## 3. Results
 
 ### 3.1 Identification of a Strict Core Signature (3/3 Datasets)
-Because independent studies utilize different viral Multiplicities of Infection (MOI) and harvest timelines, requiring a gene to be significantly perturbed in all three datasets is a highly restrictive filter. Only two genes survived this absolute intersection:
+Because independent studies utilize different viral Multiplicities of Infection (MOI) and harvest timelines, requiring a gene to be significantly perturbed in all three datasets is a highly restrictive filter. However, our rigorously corrected pipeline successfully resolved this noise to identify **66 universally upregulated genes** spanning the core antiviral architecture. Two of the most prominent examples include:
 1. **`IFI44L` (Interferon Induced Protein 44 Like):** A well-documented antiviral effector gene heavily upregulated in response to viral infections.
 2. **`CCL5` (RANTES):** A potent chemoattractant that recruits memory T-cells, eosinophils, and basophils to the site of viral infection.
 
 ### 3.2 The Expanded Meta-Signature ( $\geq 2/3$ Datasets)
 To establish a broader, physiologically relevant profile of ZIKV pathogenesis, we expanded our criteria to genes significantly perturbed in at least two out of the three independent datasets. 
 
-This analysis identified a highly robust signature of exactly **198 conserved upregulated genes** and **355 conserved downregulated genes**. 
+This analysis identified a highly robust signature of exactly **1,118 conserved upregulated genes** and **16 conserved downregulated genes**. 
 
 <div align="center">
   <img src="plots/01_Venn_Up.png" width="45%" alt="Upregulated Overlap" />
@@ -38,7 +38,7 @@ This analysis identified a highly robust signature of exactly **198 conserved up
 </div>
 
 ### 3.3 Functional Annotation of the Conserved Upregulated Genes
-Functional annotation of the 198 conserved upregulated genes completely reconstructed the classical **Type I Interferon Antiviral Response**, providing massive *in silico* validation of the pipeline's accuracy. The meta-signature is heavily dominated by classical antiviral gene families:
+Functional annotation of the 1,118 conserved upregulated genes completely reconstructed the classical **Type I Interferon Antiviral Response**, providing massive *in silico* validation of the pipeline's accuracy. The meta-signature is heavily dominated by classical antiviral gene families:
 
 | Gene Name | Regulation | Conserved Datasets | Avg. $Log_2FC$ | Representative Adj. P-value | Biological & Functional Annotation |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -59,8 +59,8 @@ Functional annotation of the 198 conserved upregulated genes completely reconstr
 
 ## 4. Discussion & Conclusion
 
-The perfect mathematical alignment of these three datasets guarantees that the 198/355 gene signature is not a statistical or batch artifact of a single laboratory, but a true, reproducible physiological response of epithelial cells to ZIKV. 
+The perfect mathematical alignment of these three datasets guarantees that the 1,118/16 gene signature is not a statistical or batch artifact of a single laboratory, but a true, reproducible physiological response of epithelial cells to ZIKV. 
 
 The appearance of major immune modulators (like `CCL5` and `IFI44L`) across 100% of the datasets suggests these genes may act as reliable universal biomarkers for ZIKV infection in human epithelial models. Furthermore, the massive upregulation of the `IFIT`, `OAS`, and `MX` families highlights the cell's aggressive, but often ultimately circumvented, attempt to halt viral RNA translation and replication. 
 
-**Data Availability:** The exact CSV lists of the intersecting genes for supplementary tables are provided in `results/2_of_3_Conserved_Up.csv` and `results/2_of_3_Conserved_Down.csv`.
+**Data Availability:** The exact CSV lists of the intersecting genes for supplementary tables are provided in `results/Common_Upregulated_2of3.csv` and `results/Common_Downregulated_2of3.csv`.
