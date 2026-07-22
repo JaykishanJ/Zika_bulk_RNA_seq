@@ -180,8 +180,28 @@ tryCatch({
     print(head(hub_df, 5))
     
     if(length(hub_genes) > 1) {
+      # Map STRING IDs to gene symbols for labels
+      V(sub_net)$label <- mapped$gene[match(V(sub_net)$name, mapped$STRING_id)]
+      
+      # Highlight top 10% hub genes in red, others in blue
+      deg_thresh <- quantile(degree(sub_net), 0.9)
+      V(sub_net)$color <- ifelse(degree(sub_net) >= deg_thresh, "#D73027", "#4575B4")
+      
       png("plots/06_PPI_Network.png", width = 10, height = 10, units = "in", res = 600)
-      plot(sub_net, vertex.size=5, vertex.label=NA, edge.width=0.5, main="PPI Network of Core ZIKV Signature")
+      set.seed(123)
+      plot(sub_net, 
+           layout = layout_with_fr,
+           vertex.size = 5 + (degree(sub_net) / max(degree(sub_net))) * 8, # Size by degree
+           vertex.label = V(sub_net)$label,
+           vertex.label.cex = 0.8,
+           vertex.label.color = "black",
+           vertex.label.dist = 1.2,
+           vertex.color = V(sub_net)$color,
+           vertex.frame.color = "white",
+           edge.width = 0.5,
+           edge.color = "gray80",
+           main = "Literature-Grade PPI Network of Core ZIKV Signature")
+      legend("bottomright", legend=c("Top 10% Hub Genes", "Peripheral Genes"), col=c("#D73027", "#4575B4"), pch=19, bty="n", cex=1.2)
       dev.off()
     }
   }
