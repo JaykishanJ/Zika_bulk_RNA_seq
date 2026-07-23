@@ -102,6 +102,17 @@ Key gene families dominating this meta-signature:
 > [!IMPORTANT]
 > The appearance of `IFIH1` (MDA5), `OAS3`, and `IFIT1` natively validates the analysis, as these are the primary cytosolic sensors and effectors for Flaviruses like Zika.
 
+### 🎯 miRNA Target Analysis & Validation Panel
+Intersecting the **66-gene conserved ZIKV core** with the `miRTarBase` empirical database identified highly significant host targets for `miR-134-5p`, `miR-146a-5p`, and `miR-146b-5p`. We isolated a specific **5-gene validation panel** containing genes that are significantly upregulated across all three independent ZIKV cohorts, despite being verified targets for these suppressive miRNAs:
+
+1. **`IRF7`** *(Targeted by miR-146a)* - Master interferon transcription factor.
+2. **`IFIT3`** *(Targeted by miR-146a & miR-146b)* - Viral translation inhibitor.
+3. **`RSAD2`** *(Targeted by miR-146a)* - Broad-spectrum antiviral effector.
+4. **`CCL5`** *(Targeted by miR-146a)* - Key immune-recruiting chemokine.
+5. **`SAMD9L`** *(Targeted by miR-146a & miR-146b)* - Innate immunity regulator.
+
+These 5 genes represent the most biologically relevant, high-confidence candidates for downstream wet-lab validation (qPCR/Western Blot).
+
 ---
 
 ## 📊 Pipeline Statistics Dashboard
@@ -129,6 +140,14 @@ Zika_wetlab/
 │   │   └── Common_Downregulated_2of3.csv
 │   ├── meta_analysis.R    # Intersection aggregation script
 │   └── ppi_network.R      # Publication-ready PPI generation script
+│
+├── miRNA_target_analysis/ # Downstream validation and miRNA panel targets
+│   ├── 00_Raw_miRNA_Data/
+│   │   └── hsa_MTI.csv    # miRTarBase interactions database
+│   ├── 66_core_genes_miRNA_annotated.csv
+│   ├── 5_gene_validation_panel.csv
+│   ├── miRNA_target_interactions.csv
+│   └── miRNA_target_analysis.R
 │
 ├── GSE146423/             # Complete isolated pipeline for Dataset 1
 │   ├── plots/             # 600 DPI PNGs (QC, Volcano, Heatmap, GSEA, Networks)
@@ -204,6 +223,15 @@ Zika_wetlab/
 | Hub Centrality Concordance | GSEA Core Pathway Network |
 | :---: | :---: |
 | <img src="meta-analysis/plots/ppi/04_Hub_Metric_Heatmap.png" width="100%" /> | <img src="GSE146423/plots/GSEA/21_GSEA_CnetPlot.png" width="100%" /> |
+
+</details>
+
+<details open>
+<summary><b>miRNA Target Validation Panel</b></summary>
+
+| 5-Gene Validation Panel |
+| :---: |
+| <img src="miRNA_target_analysis/07_miRNA_Panel_5genes.png" width="100%" /> |
 
 </details>
 

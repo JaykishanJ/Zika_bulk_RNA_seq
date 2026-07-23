@@ -1,0 +1,22 @@
+miRNA,core_gene,evidence,n_records,experiments,PMIDs
+hsa-miR-146a-5p,CCL5,Functional (strong),1,Luciferase reporter assay,24996260
+hsa-miR-146a-5p,IFI27,Functional (strong),1,Microarray,18057241
+hsa-miR-146a-5p,IFI44,Functional (strong),1,Microarray,18057241
+hsa-miR-146a-5p,IFI44L,Functional (strong),1,Microarray,18057241
+hsa-miR-146a-5p,IFIT1,Functional (strong),1,Microarray,18057241
+hsa-miR-146a-5p,IFIT3,Functional (strong),1,Microarray,18057241
+hsa-miR-146a-5p,IFIT5,Functional (strong),1,Microarray,18057241
+hsa-miR-146a-5p,IFITM1,Functional (strong),1,Microarray,18057241
+hsa-miR-146a-5p,IRF7,Functional (strong),1,Microarray,18057241
+hsa-miR-146a-5p,ISG15,Functional (strong),1,Microarray,18057241
+hsa-miR-146a-5p,MX2,Functional (strong),1,Microarray,18057241
+hsa-miR-146a-5p,OASL,Functional (strong),1,Microarray,18057241
+hsa-miR-146a-5p,RSAD2,Functional (strong),1,Microarray,18057241
+hsa-miR-146a-5p,SAMD9L,Functional (strong),1,Microarray,18057241
+hsa-miR-146a-5p,TRIM22,Functional (strong),1,Microarray,18057241
+hsa-miR-146b-5p,APOL6,Functional (strong),1,CLIP-seq,
+hsa-miR-146b-5p,IFI6,Functional (strong),2,CLIP-seq,
+hsa-miR-146b-5p,IFIT3,Functional (strong),2,CLIP-seq,
+hsa-miR-146b-5p,PARP9,Functional (strong),3,CLIP-seq,
+hsa-miR-146b-5p,SAMD9L,Functional (strong),2,CLIP-seq,
+hsa-miR-146b-5p,XAF1,Functional (strong),1,CLIP-seq,
